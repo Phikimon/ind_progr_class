@@ -9,7 +9,7 @@ int sum_of_hex_digits(int val) {
     return res;
 }
 
-// See FIXME
+// See https://raw.githubusercontent.com/Phikimon/ind_progr_class/master/resource/div_by_5.png
 int is_div_by_5(int val) {
     do {
         val = sum_of_hex_digits(val);
