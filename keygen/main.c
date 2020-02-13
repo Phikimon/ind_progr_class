@@ -8,6 +8,16 @@
 
 #define MAX_STRING_SIZE 64
 
+int validate_login(const char* login) {
+    int len = strlen(login);
+
+    for (int i = 0; i < len; i++) {
+        if (!isalnum(login[i]))
+            return 1;
+    }
+    return 0;
+}
+
 // login_hash() and pass_hash() functions
 // are translated from assembly to C and
 // simplified a bit comparing to the source
@@ -32,8 +42,7 @@ unsigned char login_hash(const char *login) {
 // This function is not called in this program,
 // it was used for debugging. It is left here
 // to see the reason in generate_password()
-unsigned char pass_hash(const char *proc)
-{
+unsigned char pass_hash(const char *proc) {
     int len = strlen(proc);
     int res = 0;
 
@@ -45,8 +54,7 @@ unsigned char pass_hash(const char *proc)
 // This function puts random alphanumeric letters
 // in the password until it is possible to get
 // exact desired sum by adding a single character
-int generate_password(unsigned char sum, char** res)
-{
+int generate_password(unsigned char sum, char** res) {
     static char buf[MAX_STRING_SIZE] = {0};
     int i = 0;
     int term = 0;
@@ -67,8 +75,7 @@ int generate_password(unsigned char sum, char** res)
     return 0;
 }
 
-void print_passwords(char* login, long n)
-{
+void print_passwords(char* login, long n) {
     unsigned char hash = (unsigned)login_hash(login);
     char* pass = NULL;
     /* Since random function is used there is
@@ -87,8 +94,7 @@ void print_passwords(char* login, long n)
     }
 }
 
-int main(void)
-{
+int main(void) {
     char *endptr = NULL;
     // Ah sh*t, here we go again with the user input
     char login[MAX_STRING_SIZE] = {};
@@ -97,7 +103,11 @@ int main(void)
     if (scanf("%64s", login) != 1)
         return 1;
     if (login[MAX_STRING_SIZE - 1] != '\0') {
-        printf("Login too long\n");
+        printf("\nLogin too long\n");
+        return 1;
+    }
+    if (validate_login(login)) {
+        printf("\nLogin should consist of alphanumeric characters\n");
         return 1;
     }
 
