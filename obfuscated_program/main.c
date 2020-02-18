@@ -3,6 +3,14 @@
 #include <string.h>
 #include <stdint.h>
 
+/*
+ * This program basically divides input into 32-bit
+ * unsigned integers, fills XOR-linked list with them
+ * and performs bubble sort on it.
+ * More on XOR-linked list here:
+ * https://en.wikipedia.org/wiki/XOR_linked_list
+ */
+
 // to be compiled under x86
 
 struct node {
