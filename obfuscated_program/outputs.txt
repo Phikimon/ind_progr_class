@@ -1,0 +1,13 @@
+main.c:
+
+Following are the nodes of Linked List:
+4294967295 155 16
+
+obf.c:
+
+[ 0]: ptr = 00691418, data = 16, nptr = 00691420
+[ 1]: ptr = 00691420, data = 155, nptr = 00691428
+[ 2]: ptr = 00691428, data = 4294967295, nptr = 00000000
+
+Remark: output of main.c is reversed, because head of
+        the list is located in the end of the array.
