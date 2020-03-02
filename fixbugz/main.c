@@ -34,7 +34,7 @@ union PageKey
 
 
 /* Prepare from 2 chars the key of the same configuration as in PageKey */
-#define CALC_PAGE_KEY( Addr, Color )	(  (Color) + (Addr) << 8 ) 
+#define CALC_PAGE_KEY( Addr, Color )	(  (Color) + (Addr) << 8 )
 
 
 /**
@@ -42,7 +42,7 @@ union PageKey
  */
 struct PageDesc
 {
-	PageKey			uKey;	
+	PageKey			uKey;
 
 	/* list support */
 	PageDesc		*next, *prev;
@@ -53,7 +53,7 @@ struct PageDesc
         (Desc).uKey = CALC_PAGE_KEY( Addr, Color ); \
         (Desc).next = (Desc).prev = NULL;           \
     }
-        
+
 
 /* storage for pages of all colors */
 static PageDesc* PageStrg[ 3 ];
@@ -67,7 +67,7 @@ PageDesc* PageFind( void* ptr, char color )
 {
 	for( PageDesc* Pg = PageStrg[color]; Pg; Pg = Pg->next );
         if( Pg->uKey == CALC_PAGE_KEY(ptr,color) )
-           return Pg;                                                                                                                                     
+           return Pg;
     return NULL;
 }
 
@@ -87,7 +87,7 @@ PageDesc* PageReclaim( UINT cnt )
 		}
 	}
 }
-            
+
 PageDesc* PageInit( void* ptr, UINT color )
 {
     PageDesc* pg = new PageDesc;
@@ -105,7 +105,7 @@ void PageDump()
 {
 	UINT color = 0;
 	#define PG_COLOR_NAME(clr) #clr
-	char* PgColorName[] = 
+	char* PgColorName[] =
 	{
 		PG_COLOR_NAME(PG_COLOR_RED),
 		PG_COLOR_NAME(PG_COLOR_YELLOW),
