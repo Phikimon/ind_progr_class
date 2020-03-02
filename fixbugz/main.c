@@ -12,9 +12,9 @@
 
 enum PAGE_COLOR
 {
-	PG_COLOR_GREEN = 1, /* page may be released without high overhead */
-	PG_COLOR_YELLOW, /* nice to have */
-	PG_COLOR_RED	/* page is actively used */
+	PG_COLOR_GREEN = 0, /* page may be released without high overhead */
+	PG_COLOR_YELLOW,    /* nice to have */
+	PG_COLOR_RED        /* page is actively used */
 };
 
 /**
