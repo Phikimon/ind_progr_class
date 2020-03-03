@@ -53,10 +53,10 @@ struct PageDesc
 	struct PageDesc *next, *prev;
 };
 
-#define PAGE_INIT( Desc, Addr, Color )              \
-{                                                   \
-	(Desc).uKey = CALC_PAGE_KEY( Addr, Color ); \
-	(Desc).next = (Desc).prev = NULL;           \
+#define PAGE_INIT( Desc, Addr, Color )                    \
+{                                                         \
+	(Desc)->uKey.uKey = CALC_PAGE_KEY( Addr, Color ); \
+	(Desc)->next = (Desc)->prev = NULL;               \
 }
 
 /* storage for pages of all colors */
@@ -104,7 +104,7 @@ struct PageDesc* PageInit( void* ptr, UINT color )
 {
 	struct PageDesc* pg = (struct PageDesc*)calloc(1, sizeof(*pg));
 	if( pg )
-		PAGE_INIT(&pg, ptr, color);
+		PAGE_INIT(pg, ptr, color);
 	else
 		printf("Allocation has failed\n");
 	return pg;
