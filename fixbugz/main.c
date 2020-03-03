@@ -31,11 +31,11 @@ union PageKey
 {
 	struct
 	{
-		CHAR	cColor: 8;
-		UINT	cAddr: 24;
+		CHAR Color: 8;
+		UINT cAddr: 24;
 	};
 
-	UINT	uKey;
+	UINT uKey;
 };
 
 /* Prepare from 2 chars the key of the same configuration as in PageKey */
@@ -46,10 +46,10 @@ union PageKey
  */
 struct PageDesc
 {
-	union PageKey			uKey;
+	union PageKey   uKey;
 
 	/* list support */
-	struct PageDesc		*next, *prev;
+	struct PageDesc *next, *prev;
 };
 
 #define PAGE_INIT( Desc, Addr, Color )              \
