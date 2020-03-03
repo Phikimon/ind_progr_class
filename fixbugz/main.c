@@ -48,7 +48,7 @@ struct PageDesc
 	PageKey			uKey;
 
 	/* list support */
-	PageDesc		*next, *prev;
+	struct PageDesc		*next, *prev;
 };
 
 #define PAGE_INIT( Desc, Addr, Color )              \
@@ -58,25 +58,25 @@ struct PageDesc
 }
 
 /* storage for pages of all colors */
-static PageDesc* PageStrg[ 3 ];
+static struct PageDesc* PageStrg[ 3 ];
 
 void PageStrgInit()
 {
 	memset( PageStrg, 0, sizeof(&PageStrg) );
 }
 
-PageDesc* PageFind( void* ptr, char color )
+struct PageDesc* PageFind( void* ptr, char color )
 {
-	for( PageDesc* Pg = PageStrg[color]; Pg; Pg = Pg->next );
+	for( struct PageDesc* Pg = PageStrg[color]; Pg; Pg = Pg->next );
 	if( Pg->uKey == CALC_PAGE_KEY(ptr,color) )
 		return Pg;
 	return NULL;
 }
 
-PageDesc* PageReclaim( UINT cnt )
+struct PageDesc* PageReclaim( UINT cnt )
 {
 	UINT color = 0;
-	PageDesc* Pg;
+	struct PageDesc* Pg;
 	while( cnt )
 	{
 		Pg = Pg->next;
@@ -90,9 +90,9 @@ PageDesc* PageReclaim( UINT cnt )
 	}
 }
 
-PageDesc* PageInit( void* ptr, UINT color )
+struct PageDesc* PageInit( void* ptr, UINT color )
 {
-	PageDesc* pg = new PageDesc;
+	struct PageDesc* pg = new PageDesc;
 	if( pg )
 		PAGE_INIT(&pg, ptr, color);
 	else
@@ -117,7 +117,7 @@ void PageDump()
 	while( color <= PG_COLOR_RED )
 	{
 		printf("PgStrg[(%s) %u] ********** \n", color, PgColorName[color] );
-		for( PageDesc* Pg = PageStrg[++color]; Pg != NULL; Pg = Pg->next )
+		for( struct PageDesc* Pg = PageStrg[++color]; Pg != NULL; Pg = Pg->next )
 		{
 			if( Pg->uAddr = NULL )
 				continue;
