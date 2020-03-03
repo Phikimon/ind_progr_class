@@ -46,7 +46,7 @@ union PageKey
  */
 struct PageDesc
 {
-	PageKey			uKey;
+	union PageKey			uKey;
 
 	/* list support */
 	struct PageDesc		*next, *prev;
