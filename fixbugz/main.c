@@ -64,7 +64,7 @@ static struct PageDesc* PageStrg[ 3 ];
 
 void PageStrgInit()
 {
-	memset( PageStrg, 0, sizeof(&PageStrg) );
+	(void)memset( PageStrg, 0, sizeof(&PageStrg) );
 }
 
 struct PageDesc* PageFind( void* ptr, char color )
@@ -75,7 +75,7 @@ struct PageDesc* PageFind( void* ptr, char color )
 	return NULL;
 }
 
-struct PageDesc* PageReclaim( UINT cnt )
+void PageReclaim( UINT cnt )
 {
 	UINT color = 0;
 	struct PageDesc* Pg;
