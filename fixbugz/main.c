@@ -40,7 +40,7 @@ union PageKey
 };
 
 /* Prepare from 2 chars the key of the same configuration as in PageKey */
-#define CALC_PAGE_KEY( Addr, Color )	(  (Color) + (Addr) << 8 )
+#define CALC_PAGE_KEY( Addr, Color )	(UINT)(  ((UINT)Color) | (((UINT)Addr) << 8) )
 
 /**
  * Descriptor of a single guest physical page
