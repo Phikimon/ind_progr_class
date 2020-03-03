@@ -129,10 +129,10 @@ void PageDump()
 		printf("PgStrg[(%u) %s] ********** \n", color, PgColorName[color] );
 		for( struct PageDesc* Pg = PageStrg[++color]; Pg != NULL; Pg = Pg->next )
 		{
-			if( Pg->uAddr = NULL )
+			if( (void*)Pg->uKey.cAddr == NULL )
 				continue;
 
-			printf("Pg :Key = 0x%x, addr %p\n", Pg->uKey, Pg->uAddr );
+			printf("Pg :Key = 0x%x, addr %p\n", Pg->uKey.uKey, (void*)Pg->uKey.cAddr );
 		}
 	}
 #undef PG_COLOR_NAME
