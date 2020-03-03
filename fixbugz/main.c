@@ -15,6 +15,7 @@ typedef unsigned int UINT;
 #endif
 
 #include <stdio.h>
+#include <stdlib.h>
 
 enum PAGE_COLOR
 {
@@ -92,7 +93,7 @@ struct PageDesc* PageReclaim( UINT cnt )
 
 struct PageDesc* PageInit( void* ptr, UINT color )
 {
-	struct PageDesc* pg = new PageDesc;
+	struct PageDesc* pg = (struct PageDesc*)calloc(1, sizeof(*pg));
 	if( pg )
 		PAGE_INIT(&pg, ptr, color);
 	else
