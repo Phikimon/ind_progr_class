@@ -54,10 +54,10 @@ struct PageDesc
 };
 
 #define PAGE_INIT( Desc, Addr, Color )                    \
-{                                                         \
+do {                                                      \
 	(Desc)->uKey.uKey = CALC_PAGE_KEY( Addr, Color ); \
 	(Desc)->next = (Desc)->prev = NULL;               \
-}
+} while(0)
 
 /* storage for pages of all colors */
 static struct PageDesc* PageStrg[ 3 ];
