@@ -126,7 +126,7 @@ void PageDump()
 
 	while( color <= PG_COLOR_RED )
 	{
-		printf("PgStrg[(%s) %u] ********** \n", color, PgColorName[color] );
+		printf("PgStrg[(%u) %s] ********** \n", color, PgColorName[color] );
 		for( struct PageDesc* Pg = PageStrg[++color]; Pg != NULL; Pg = Pg->next )
 		{
 			if( Pg->uAddr = NULL )
