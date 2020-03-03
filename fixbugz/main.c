@@ -16,6 +16,7 @@ typedef unsigned int UINT;
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 enum PAGE_COLOR
 {
