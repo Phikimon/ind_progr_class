@@ -62,6 +62,8 @@ struct PageDesc
 /* storage for pages of all colors */
 static struct PageDesc* PageStrg[ 3 ];
 
+void PageRemove(struct PageDesc* ptr);
+
 void PageStrgInit()
 {
 	(void)memset( PageStrg, 0, sizeof(&PageStrg) );
