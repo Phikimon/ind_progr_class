@@ -81,14 +81,20 @@ struct PageDesc* PageReclaim( UINT cnt )
 	struct PageDesc* Pg;
 	while( cnt )
 	{
-		Pg = Pg->next;
-		PageRemove( PageStrg[ color ] );
-		cnt--;
+		Pg = PageStrg[color];
 		if( Pg == NULL )
 		{
 			color++;
-			Pg = PageStrg[ color ];
+			continue;
 		}
+		if (Pg->next == NULL)
+		{
+			PageRemove(Pg);
+		} else {
+			Pg = Pg->next;
+			PageRemove(Pg->prev);
+		}
+		cnt--;
 	}
 }
 
