@@ -70,7 +70,7 @@ void PageStrgInit()
 struct PageDesc* PageFind( void* ptr, char color )
 {
 	for( struct PageDesc* Pg = PageStrg[color]; Pg; Pg = Pg->next )
-		if( Pg->uKey == CALC_PAGE_KEY(ptr,color) )
+		if( Pg->uKey.uKey == CALC_PAGE_KEY(ptr,color) )
 			return Pg;
 	return NULL;
 }
