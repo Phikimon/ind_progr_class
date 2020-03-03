@@ -7,7 +7,13 @@
  *		AnnaM
  */
 
-#include <Windows.h>
+#ifdef _WIN32
+#  include <Windows.h>
+#else
+typedef char CHAR;
+typedef unsigned int UINT;
+#endif
+
 #include <stdio.h>
 
 enum PAGE_COLOR
