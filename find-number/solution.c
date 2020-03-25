@@ -64,6 +64,10 @@ int read_int(int* res)
 		printf("\nOverflow/underflow occured\n");
 		return 1;
 	}
+	if (val < 0) {
+		printf("\nBoth arguments shall be less than zero(val = %ld)\n", val);
+		return 1;
+	}
 	*res = (int)val;
 	return 0;
 }
